@@ -1,0 +1,50 @@
+body {
+    background-color: #ebeff5 !important;
+    font-family: Segoe UI
+}
+
+#button-addon1 {
+  color: #ffc371;
+}
+
+i {
+  color: #ffc371;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.form-control.shadow-0:focus {
+  box-shadow: none;
+}
+
+.dz {
+    border: dashed !important;
+    border-color: #ccc !important;
+    border-radius: 10px !important;
+}
+
+.dz:hover {
+    background-color: aliceblue !important;
+}
+
+a { color: #43464B }
+
+#total-orders{
+    background-color: #4cb4c7;
+}
+
+#orders-delivered{
+    background-color: #7abecc;
+}
+
+#orders-pending{
+    background-color: #7CD1C0;
+}
+
+.navbar-nav {
+  align-items: center;
+}
