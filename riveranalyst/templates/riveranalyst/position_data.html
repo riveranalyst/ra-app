@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<body>
+<h1>{{ position_name }}</h1>
+    <div class="row">
+        {% for gsd in gsds %}
+            <div class="col-md-7">
+                <div class="card card-body">
+                    {% autoescape off %}
+                        {{ gsd }}
+                    {% endautoescape %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+    <div class="row">
+        {% if idoc_div %}
+        <div class="col-md-4">
+            <div class="card card-body">
+                {% autoescape off %}
+                    {{ idoc_div }}
+                {% endautoescape %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if kf_div %}
+        <br>
+            <div class="col-md-4">
+                <div class="card card-body">
+                    {% autoescape off %}
+                        {{ kf_div }}
+                    {% endautoescape %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}

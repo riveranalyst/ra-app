@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--{% if user.is_authenticated %}-->
+
+    <br>
+        <!--    DRAG AND DROP ZONE-->
+        <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+        <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+        <h2>Upload area</h2>
+        <div>
+            <p>For adding data to the DB, follow these steps:
+            <ol>
+                <li>Important: use only the template CSVs as shown in the  <a href="query">query tab</a>. Swapping column
+                    positions or leaving selected fields blank is not a problem, but don't remove nor rename any
+                    column names.</li>
+                <li>First, upload the general information regarding the measurement points (option 'Measurement positions') using
+                    the appropriate template CSV. Name the "measurement positions" carefully. They will link
+                    the database across multiple tables to gather parametrical data for that measurement point. Thus each
+                    field of the columns "meas_position" in the CSV template needs to be unique. </li>
+                <li>Upload the collected data (following the corresponding template) by selecting the data type and
+                    uploading the csv in the dropzone below. As long as the measurement positions (step 2) are
+                uploaded to the database, the order for uploading the remaining parametrical data doensn't matter.
+                    Important: <b>the measurement position of the parametrical data needs to exactly match one of the
+                        "meas_position" you provided in step 2, otherwise an error message will be shown. </b></li>
+            </ol>
+
+            Alternatively, the DB can also be managed in the <a href="/admin">Admin</a> module. </p>
+
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="card card-body">
+                    <form action="modify/upload/" method="POST" class="dropzone dz" id="my-dropzone">
+                        {%csrf_token%}
+                        {{ form.as_p }}
+                        <div class="fallback">
+                            <input name="file" type="file" multiple />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <br>
+    <div class="row">
+        <br>
+        <p><a href="{% url 'riveranalyst:logout' %}?next={{ request.path }}"><button class="btn btn-primary">Log out</button></a></p>
+    </div>
+
+<!--{% else %}-->
+<!--    <div class="card card-body">-->
+<!--        <h2>User Authentication Required </h2>-->
+<!--        <p><a href="{% url 'riveranalyst:login' %}?next={{ request.path }}">Login</a> to have access to the database.</p>-->
+<!--    </div>-->
+<!--{% endif %}-->
+
+
+
+{% endblock %}

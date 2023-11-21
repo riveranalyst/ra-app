@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load django_tables2 %}
+
+{% block content %}
+
+<br>
+<div class="row">
+
+    <div class="col-md">
+        <div class="row">
+            <div class="col-md">
+                <div class="card card-body">
+                <h3>Filter by measurement positions</h3>
+                    <form method="get">
+                        {{ posFilter.form.as_p }}
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card text-center text-white  mb-3" id="total-orders">
+                    <div class="card-header">
+                        <h5 class="card-title">Subsurface/ Surface Sediment Samples</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{subsurf_count}}/ {{surf_count}}</h3>
+                    </div>
+                </div>
+                <div class="card text-center text-white  mb-3" id="orders-delivered">
+                    <div class="card-header">
+                        <h5 class="card-title">IDO/ kf Depth Profiles</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{idoc_count}}/ {{kf_count}}</h3>
+                    </div>
+                </div>
+                <div class="card text-center text-white  mb-3" id="orders-pending">
+                    <div class="card-header">
+                        <h5 class="card-title">Points of Hydraulic Measurements</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{v_count}}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card card-body">
+                {% autoescape off %}
+                    {{ mapboxfig }}
+                {% endautoescape %}
+                </div>
+            </div>
+	    </div>
+        <br>
+        <div class="row">
+            <div class="card card-body">
+                <h3>Measurement Positions</h3>
+
+                {% render_table position_table %}
+                <div class="margin-right">
+                    <a href="{% querystring '_export_pos'='csv' %}"><button class="btn btn-primary">Download CSV</button></a>
+                    <a href="{% querystring '_export_pos'='xlsx' %}"><button class="btn btn-primary">Download XLSX</button></a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="card card-body">
+                <h3>Subsurface Sediment Samples</h3>
+
+                {% render_table subsurf_tb_show %}
+                <div class="margin-right">
+                    <a href="{% querystring '_export'='csv' %}"><button class="btn btn-primary">Download CSV</button></a>
+                    <a href="{% querystring '_export'='xlsx' %}"><button class="btn btn-primary">Download XLSX</button></a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="card card-body">
+                <h3>Surface Sediment Samples</h3>
+
+                {% render_table surf_tb_show %}
+                <div class="margin-right">
+                    <a href="{% querystring '_export'='csv' %}"><button class="btn btn-primary">Download CSV</button></a>
+                    <a href="{% querystring '_export'='xlsx' %}"><button class="btn btn-primary">Download XLSX</button></a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="card card-body">
+                <h3>Intragravel Dissolved Oxygen (IDO)</h3>
+                {% render_table idoc_table %}
+                <div class="margin-right">
+                    <a href="{% querystring '_export_idoc'='csv' %}"><button class="btn btn-primary">Download CSV</button></a>
+                    <a href="{% querystring '_export_idoc'='xlsx' %}"><button class="btn btn-primary">Download XLSX</button></a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="card card-body">
+                <h3>Hydraulic Conductivity (kf) </h3>
+                {% render_table kf_table %}
+                <div class="margin-right">
+                    <a href="{% querystring '_export_kf'='csv' %}"><button class="btn btn-primary">Download CSV</button></a>
+                    <a href="{% querystring '_export_kf'='xlsx' %}"><button class="btn btn-primary">Download XLSX</button></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
