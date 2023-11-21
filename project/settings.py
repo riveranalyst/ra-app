@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-r!0oog9n8r0l@6t3&@@r)ql6t1-%lr@aujgl+h1$%-s=q(91a=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -167,6 +167,7 @@ DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap.html"
 STATICFILES_LOCATION = 'static'
 STATIC_URL = '/static/'
 # STATIC_ROOT = 'static' # setting that specifies the root directory where collected static files will be stored.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
