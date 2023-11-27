@@ -102,7 +102,7 @@ def get_PCA(df):
     )
     fig2d.update_traces(diagonal_visible=False)
     # Set the desired width, height, and scale values
-    pio.write_image(fig2d, 'pca_matrix.png', scale=4)
+    # pio.write_image(fig2d, 'pca_matrix.png', scale=4)
 
     # Plot data 3-dimensionaly in the new coordinate system of PCs
     total_var = pca.explained_variance_ratio_.sum() * 100
@@ -116,7 +116,7 @@ def get_PCA(df):
     # pca2d = PCA(n_components=2)
     components2d = pca.fit_transform(df4pca_final)
     loadings = pca.components_.T * np.sqrt(pca.explained_variance_)
-    np.savetxt('loadings.csv', loadings, delimiter=',')
+    # np.savetxt('loadings.csv', loadings, delimiter=',')
 
     fig_load = px.scatter(components2d, x=0, y=1, color=df4pca['river'], symbol=df4pca['river'],
                           range_color=[-1000, 1000],
