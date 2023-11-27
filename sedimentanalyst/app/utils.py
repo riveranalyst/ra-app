@@ -123,7 +123,7 @@ def append_global(obj=None, df=None):
     df_stat.reset_index(drop=True, inplace=True)
 
     # extract name and date of the sample
-    np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
+    # np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
     df_meta = pd.DataFrame(columns=["sample name", "date", "lat", "lon"],
                            data=np.array([[obj.samplename, obj.sampledate, obj.coords[0], obj.coords[1]]]))
 
