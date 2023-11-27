@@ -28,7 +28,7 @@ def get_corr_fig():
     df_global = df_global.drop_duplicates(subset=['sample_id', 'dp_position'])
 
     # Average along the depth the IDO and Kf depth-profile value
-    df_avg_ido_kf = df_global.groupby('meas_position', as_index=False).mean()
+    df_avg_ido_kf = df_global.groupby(['meas_position'], as_index=False).mean()
 
     # merge the depth-explicit dataframe with the positions table
     df_global = dfs[-1].merge(df_global, left_on='name', right_on='meas_position')
