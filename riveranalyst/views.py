@@ -128,8 +128,8 @@ def query(request):
         return exporter.response("subsurface-samples.{}".format(export_format))
 
     if TableExport.is_valid_format(export_format_surf):
-        exporter = TableExport(export_format_idoc, idoc_show)
-        return exporter.response("surface-samples.{}".format(export_format_idoc))
+        exporter = TableExport(export_format_surf, surf_tb_show)
+        return exporter.response("surface-samples.{}".format(export_format_surf))
 
     if TableExport.is_valid_format(export_format_st):
         exporter = TableExport(export_format_st, position_show)
