@@ -24,7 +24,7 @@ django-redis==5.2.0
 django-tables2==2.4.1
 dpd-components==0.1.0
 et-xmlfile==1.1.0
-Flask==3.0.0
+Flask
 fonttools==4.45.1
 gunicorn==23.0.0
 importlib-metadata==6.8.0
